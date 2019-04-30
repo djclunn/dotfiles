@@ -7,8 +7,13 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=$HOME/.vim/bundle/Vundle.vim/
-call vundle#begin('$HOME/.vim/bundle/')
+if has("win16") || has("win32")
+    set rtp+=$HOME/.vim/bundle/Vundle.vim/
+    call vundle#begin('$HOME/.vim/bundle/')
+else
+    set rtp+=~/.vim/bundle/Vundle.vim/
+    call vundle#begin('~/.vim/bundle/')
+endif
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 "
@@ -27,7 +32,11 @@ Plugin 'scrooloose/nerdtree'
 " Find files or tags
 Plugin 'kien/ctrlp.vim'
 " Status bar
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Show buffers in command line
+Plugin 'bling/vim-bufferline'
 
 " =>
 " => PLUGINS END
@@ -47,6 +56,18 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+""""""""""""""""""""""""""""""""""
+" =>
+" => Plugin Settings
+" =>
+""""""""""""""""""""""""""""""""""
+let $PYTHONHOME = 'C:/Users/dclunn/AppData/Local/Programs/Python/Python37/'
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+let g:airline_powerline_fonts = 1
 """"""""""""""""""""""""""""""""""
 " =>
 " => Prebuilt
@@ -105,8 +126,6 @@ endif
 " =>
 """"""""""""""""""""""""""""""""""
 
-let mapleader = ","
-
 " j/k moves keep these number of lines on screen
 set so=7
 
@@ -125,12 +144,13 @@ set smarttab		" use tabs at the start of a line, spaces elsewhere
 
 set ignorecase
 set smartcase
-set hlsearch
+set nohlsearch
 set incsearch
 set showmatch
 
-set noerrorbells
-set novisualbell
+"set vb t_vb=[?5h$<100>[?5l
+" Visual flash instead of bell
+set vb
 
 set splitbelow
 set splitright
@@ -150,18 +170,18 @@ set foldlevel=99
 
 " Python files that conform to git standard
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
     \ set fileformat=unix
 
 " Full stack development
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
     \ set shiftwidth=2
 
 " Delete trailing white space on save, useful for some filetypes ;)
@@ -182,7 +202,8 @@ set encoding=utf-8
 let python_highlight_all=1
 syntax on
 
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+"ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$']
 
 """"""""""""""""""""""""""""""""""
 " =>
@@ -195,6 +216,7 @@ if has('gui_running')
 	set background=dark
 	"colorscheme solarized
 	colorscheme desert
+    set lines=99
 else
 	colorscheme zenburn
 endif
@@ -206,6 +228,11 @@ endif
 " :nmap =	 normal mode map
 " :vmap =	 visual mode map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let mapleader=","
+
+map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
+map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
 
 " Window moves
 nnoremap <C-j> <C-W>j

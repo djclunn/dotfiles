@@ -233,8 +233,9 @@ let mapleader=","
 map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
 map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
 
-map <Leader>p :set paste<CR>i
-map <Leader>up :set nopaste<CR>
+map <Leader>p :set paste<CR>"*p:set nopaste<CR>
+map <Leader>o o<ESC>
+map <leader>O O<ESC>
 
 " Window moves
 nnoremap <C-j> <C-W>j

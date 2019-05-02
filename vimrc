@@ -34,7 +34,7 @@ Plugin 'kien/ctrlp.vim'
 " Status bar
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Show buffers in command line
 Plugin 'bling/vim-bufferline'
 
@@ -61,11 +61,10 @@ filetype plugin indent on    " required
 " => Plugin Settings
 " =>
 """"""""""""""""""""""""""""""""""
-let $PYTHONHOME = 'C:/Users/dclunn/AppData/Local/Programs/Python/Python37/'
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 let g:airline_powerline_fonts = 1
 """"""""""""""""""""""""""""""""""
@@ -233,6 +232,9 @@ let mapleader=","
 
 map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
 map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
+
+map <Leader>p :set paste<CR>i
+map <Leader>up :set nopaste<CR>
 
 " Window moves
 nnoremap <C-j> <C-W>j

@@ -118,6 +118,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export WORKON_HOME=$HOME/.virtualenvs   # Optional
-export PROJECT_HOME=$HOME/src           # Optional
-source /home/dclunn/.local/bin/virtualenvwrapper.sh
+# check for virtualenvwrapper before referencing it
+if [ -f /home/dclunn/.local/bin/virtualenvwrapper.sh]; then
+    export WORKON_HOME=$HOME/.virtualenvs   # Optional
+    export PROJECT_HOME=$HOME/src           # Optional
+    source /home/dclunn/.local/bin/virtualenvwrapper.sh
+fi

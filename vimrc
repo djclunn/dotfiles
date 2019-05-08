@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""
 " =>
-" => Vundle
+" =>> Vundle
 " =>
 """"""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
@@ -34,9 +34,11 @@ Plugin 'kien/ctrlp.vim'
 " Status bar
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'jpalardy/vim-slime'
+
 "Show buffers in command line
-Plugin 'bling/vim-bufferline'
+"Plugin 'bling/vim-bufferline'
 
 " =>
 " => PLUGINS END
@@ -58,19 +60,22 @@ filetype plugin indent on    " required
 "
 """"""""""""""""""""""""""""""""""
 " =>
-" => Plugin Settings
+" =>> Plugin Settings
 " =>
 """"""""""""""""""""""""""""""""""
-let $PYTHONHOME = 'C:/Users/dclunn/AppData/Local/Programs/Python/Python37/'
+"
+" Always show statusline
+set laststatus=2
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+" Settings for vim-slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-
-let g:airline_powerline_fonts = 1
 """"""""""""""""""""""""""""""""""
 " =>
-" => Prebuilt
+" =>> Prebuilt
 " =>
 """"""""""""""""""""""""""""""""""
 if v:progname =~? "evim"
@@ -122,7 +127,7 @@ endif
 
 """"""""""""""""""""""""""""""""""
 " =>
-" => Devin
+" =>> Devin Vim Settings
 " =>
 """"""""""""""""""""""""""""""""""
 
@@ -134,6 +139,7 @@ unmap Q
 
 set nu
 
+" all about dem tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -148,6 +154,7 @@ set nohlsearch
 set incsearch
 set showmatch
 
+set mouse=a
 "set vb t_vb=[?5h$<100>[?5l
 " Visual flash instead of bell
 set vb
@@ -157,7 +164,7 @@ set splitright
 
 """"""""""""""""""""""""""""""""""
 " =>
-" => Code
+" =>> Code
 " =>
 """"""""""""""""""""""""""""""""""
 set foldcolumn=1
@@ -207,32 +214,50 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 """"""""""""""""""""""""""""""""""
 " =>
-" => Colors
+" =>> Colors
 " =>
 """"""""""""""""""""""""""""""""""
-
-
-if has('gui_running')
-	set background=dark
-	"colorscheme solarized
-	colorscheme desert
-    set lines=99
-else
-	colorscheme zenburn
-endif
-
+colorscheme desert 
+" if has('gui_running')
+" 	"set background=dark
+" 	"colorscheme solarized
+" 	colorscheme desert
+"     set lines=99
+" else
+"     "colorscheme wombat
+"     "colorscheme zenburn
+" endif
+" 
+" colorscheme wombat
+" set background=light
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => MAPs
+" =>> MAPs
 " :map =	 recursive
 " :noremap = no recursive
 " :nmap =	 normal mode map
 " :vmap =	 visual mode map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+nnoremap <Tab> <Esc>
+vnoremap <Tab> <Esc>gV
+onoremap <Tab> <Esc>
+cnoremap <Tab> <C-C><Esc>
+inoremap <Tab> <Esc>`^
+inoremap <Leader><Tab> <Tab>
+
+" imap ii <Esc>`^
+imap jj <Esc>`^
+
+
 let mapleader=","
 
 map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
 map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
+
+map <Leader>p :set paste<CR>"*p:set nopaste<CR>
+map <Leader>o o<ESC>
+map <leader>O O<ESC>
 
 " Window moves
 nnoremap <C-j> <C-W>j
@@ -247,7 +272,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =>
-" => Complicated stuff?
+" =>> Complicated stuff?
 " =>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

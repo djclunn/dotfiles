@@ -44,7 +44,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -72,6 +72,11 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+#run powerline prompt if exists
+if [ -f "/usr/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh" ]; then
+    . /usr/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -119,7 +124,7 @@ if ! shopt -oq posix; then
 fi
 
 # check for virtualenvwrapper before referencing it
-if [ -f /home/dclunn/.local/bin/virtualenvwrapper.sh]; then
+if [ -f /home/dclunn/.local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs   # Optional
     export PROJECT_HOME=$HOME/src           # Optional
     source /home/dclunn/.local/bin/virtualenvwrapper.sh

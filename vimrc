@@ -36,6 +36,8 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jpalardy/vim-slime'
+Plugin 'simnalamburt/vim-mundo'
+
 
 "Show buffers in command line
 "Plugin 'bling/vim-bufferline'
@@ -130,6 +132,31 @@ endif
 " =>> Devin Vim Settings
 " =>
 """"""""""""""""""""""""""""""""""
+
+" Make .vim directory for backup, swap, undo files
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+" Make home folder for undo files
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "", 0700)
+endif
+set undodir^=$HOME/.vim/undo//
+set undofile
+" same for swap files
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap", "", 0700)
+endif
+set directory^=$HOME/.vim/swap//
+set swapfile
+" same for backup files
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "", 0700)
+endif
+set backupdir^=$HOME/.vim/backup//
+set backup
+" TODO set cron job to clean up swap and backups
+" https://vi.stackexchange.com/questions/6/how-can-i-use-the-undofile
 
 " j/k moves keep these number of lines on screen
 set so=7
@@ -239,21 +266,28 @@ colorscheme desert
 " :vmap =	 visual mode map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Mundo plugin map
+map <F3> :MundoToggle<CR>
+
+" Escape maps
 nnoremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
-cnoremap <Tab> <C-C><Esc>
+" cnoremap <Tab> <C-C><Esc>
 inoremap <Tab> <Esc>`^
 inoremap <Leader><Tab> <Tab>
 
 " imap ii <Esc>`^
 imap jj <Esc>`^
 
-
 let mapleader=","
 
-map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
-map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
+if has("gui_running")
+    map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
+    map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
+else
+    map <Leader>h :vert help<CR>
+endif
 
 map <Leader>p :set paste<CR>"*p:set nopaste<CR>
 map <Leader>o o<ESC>

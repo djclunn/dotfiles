@@ -14,6 +14,22 @@ files="vimrc tmux.conf inputrc bashrc zshrc bash_aliases gitconfig"
 
 ##########
 
+# get oh my zsh
+if [ ! -e ~/.oh-my-zsh ]; then
+    echo "Getting oh my zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+else
+    echo "Got oh my zsh"
+fi
+
+# make it so vim doesn't complain about vundle plugins
+if [ ! -e ~/.vim/bundle ]; then
+    echo "Stop complaining about missing plugins..."
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+else
+    echo "Got vundle"
+fi
+
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
@@ -27,17 +43,8 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
+    mv ~/.$file ~/.dotfiles_old/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-
-# make it so vim doesn't complain about vundle plugins
-if [ ! -e /.vim/bundle ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
-# get oh my zsh
-if [ ! -e /.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
 

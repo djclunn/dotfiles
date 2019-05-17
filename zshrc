@@ -61,7 +61,7 @@ COMPLETION_WAITING_DOTS="true"
 ## # Example format: plugins=(rails git textmate ruby lighthouse)
 ## plugins=(gitfast git-extras archlinux encode64 pip ruby tmux vi-mode web-search)
 ## 
-plugins=(git common-aliases colored-man-pages debian per-directory-history web-search)
+plugins=(git common-aliases colored-man-pages debian per-directory-history web-search tmux)
 # to be added 
 # virtualenvwrapper
 # syntax highlighting (custom)

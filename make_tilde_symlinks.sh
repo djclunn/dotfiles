@@ -10,7 +10,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 # list of files/folders to symlink in homedir
-files="vimrc tmux.conf inputrc bashrc zshrc bash_aliases"
+files="vimrc tmux.conf inputrc bashrc zshrc bash_aliases gitconfig"
 
 ##########
 
@@ -33,4 +33,11 @@ for file in $files; do
 done
 
 # make it so vim doesn't complain about vundle plugins
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -e /.vim/bundle ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+# get oh my zsh
+if [ ! -e /.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+

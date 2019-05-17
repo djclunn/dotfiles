@@ -62,12 +62,27 @@ COMPLETION_WAITING_DOTS="true"
 ##     source $ZSH/oh-my-zsh.sh
 ## fi
 
-#aliases I like
-alias ls="ls --color=auto"
 alias ll="ls -l"
 alias lrt="ls -lrt"
+alias la="ls -A"
+
 alias v="vim"
 alias l="less"
+
+alias ls="ls --color=auto"
+alias diff="diff --color=auto"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
+
+alias ebash_aliases="vim ~/.bash_aliases"
+alias evimrc="vim ~/.vimrc"
+alias etmuxconf="vim ~/.tmux.conf"
+alias ebashrc="vim ~/.bashrc"
+alias ezshrc="vim ~/.zshrc"
 # alias pacman="sudo pacman"
 # alias sudo='sudo '
 # unalias gcs

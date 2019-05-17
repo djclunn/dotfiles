@@ -6,3 +6,5 @@ alias ebash_aliases="vim ~/.bash_aliases"
 alias evimrc="vim ~/.vimrc"
 alias etmuxconf="vim ~/.tmux.conf"
 alias ebashrc="vim ~/.bashrc"
+alias ezshrc="vim ~/.zshrc"
+

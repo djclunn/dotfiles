@@ -12,6 +12,13 @@ zstyle :compinstall filename '/home/dclunn/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+export ZSH="/home/dclunn/.oh-my-zsh"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="norm"
+# ZSH_THEME="maran"
+# ZSH_THEME="miloshadzic"
+# ZSH_THEME="terminalparty"
+ZSH_THEME="agnoster"
 ## # Path to your oh-my-zsh configuration.
 ## ZSH=/usr/share/oh-my-zsh/
 ## 
@@ -22,10 +29,6 @@ compinit
 ## #ZSH_THEME="robbyrussell"
 ## #ZSH_THEME="kardan"
 ## ZSH_THEME="supersimple"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -58,18 +61,31 @@ COMPLETION_WAITING_DOTS="true"
 ## # Example format: plugins=(rails git textmate ruby lighthouse)
 ## plugins=(gitfast git-extras archlinux encode64 pip ruby tmux vi-mode web-search)
 ## 
-## if [ -f $ZSH/oh-my-zsh.sh ]; then
-##     source $ZSH/oh-my-zsh.sh
-## fi
+plugins=(git common-aliases colored-man-pages debian per-directory-history web-search)
+# to be added 
+# virtualenvwrapper
+# syntax highlighting (custom)
+# tmux
+# tmuxinator?
+# vi-mode?
+# wd?
+# z
 
+if [ -f $ZSH/oh-my-zsh.sh ]; then
+    source $ZSH/oh-my-zsh.sh
+fi
+
+alias ls="ls --color=auto"
 alias ll="ls -l"
 alias lrt="ls -lrt"
 alias la="ls -A"
+alias lg="ls --g"
+alias lag="ls -A --g"
+alias ..="cd .."
 
 alias v="vim"
-alias l="less"
+# replaced by L alias l="less"
 
-alias ls="ls --color=auto"
 alias diff="diff --color=auto"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -83,6 +99,7 @@ alias evimrc="vim ~/.vimrc"
 alias etmuxconf="vim ~/.tmux.conf"
 alias ebashrc="vim ~/.bashrc"
 alias ezshrc="vim ~/.zshrc"
+
 # alias pacman="sudo pacman"
 # alias sudo='sudo '
 # unalias gcs
@@ -98,15 +115,15 @@ alias ezshrc="vim ~/.zshrc"
 # export RPROMPT=%d
 
 # #search through the history with up or down using first word
-# bindkey '^[[A' up-line-or-search
-# bindkey '^[[B' down-line-or-search
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 # 
 # #fix terminal issues
-# bindkey '^[[H' beginning-of-line
-# bindkey '^[[F' end-of-line
-# bindkey '^[[3~' delete-char
-# bindkey '[1~' beginning-of-line
-# bindkey '[4~' end-of-line
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[3~' delete-char
+bindkey '[1~' beginning-of-line
+bindkey '[4~' end-of-line
 
 #set the editor
 export EDITOR='vim'
@@ -120,6 +137,10 @@ else
 fi
 
 # Powerline
-if [[ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
-    source /usr/share/powerline/bindings/zsh/powerline.zsh
+# if [[ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
+#     source /usr/share/powerline/bindings/zsh/powerline.zsh
+# fi
+# start tmux
+if [[ $SHLVL -lt 2 ]]; then
+    tmux new-session -A -s "$USER"
 fi

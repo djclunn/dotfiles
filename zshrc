@@ -6,13 +6,13 @@ setopt appendhistory autocd beep extendedglob nomatch
 unsetopt notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/dclunn/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-export ZSH="/home/dclunn/.oh-my-zsh"
+# # The following lines were added by compinstall
+# zstyle :compinstall filename '~/.zshrc'
+# 
+# autoload -Uz compinit
+# compinit
+# # End of lines added by compinstall
+export ZSH=$HOME"/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="norm"
 # ZSH_THEME="maran"
@@ -73,6 +73,8 @@ plugins=(git common-aliases colored-man-pages debian per-directory-history web-s
 
 if [ -f $ZSH/oh-my-zsh.sh ]; then
     source $ZSH/oh-my-zsh.sh
+else
+    echo "NO OH MY ZSH FOLDER?"
 fi
 
 alias ls="ls --color=auto"
@@ -138,9 +140,9 @@ fi
 
 # Powerline
 # if [[ -r /usr/share/powerline/bindings/zsh/powerline.zsh ]]; then
-#     source /usr/share/powerline/bindings/zsh/powerline.zsh
+#    source /usr/share/powerline/bindings/zsh/powerline.zsh
 # fi
 # start tmux
-if [[ $SHLVL -lt 2 ]]; then
-    tmux new-session -A -s "$USER"
-fi
+# if [[ $SHLVL -lt 2 ]]; then
+#   tmux new-session -A -s "$USER"
+# fi

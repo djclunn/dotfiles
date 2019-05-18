@@ -32,9 +32,9 @@ Plugin 'scrooloose/nerdtree'
 " Find files or tags
 Plugin 'kien/ctrlp.vim'
 " Status bar
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jpalardy/vim-slime'
 Plugin 'simnalamburt/vim-mundo'
 

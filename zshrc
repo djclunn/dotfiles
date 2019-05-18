@@ -143,6 +143,6 @@ fi
 #    source /usr/share/powerline/bindings/zsh/powerline.zsh
 # fi
 # start tmux
-# if [[ $SHLVL -lt 2 ]]; then
-#   tmux new-session -A -s "$USER"
-# fi
+if [[ $SHLVL -lt 2 ]]; then
+  tmux new-session -A -s "$USER"
+fi

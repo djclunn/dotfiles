@@ -20,6 +20,8 @@ Plugin 'VundleVim/Vundle.vim'
 " => PLUGINS START
 " =>
 
+" adds system copy command
+Plugin 'christoomey/vim-system-copy'
 " More sensible code folding
 Plugin 'tmhedberg/SimpylFold'
 " Function spanning autoindent
@@ -29,16 +31,19 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 " Proper file tree
 Plugin 'scrooloose/nerdtree'
-" Find files or tags
+" Find files or tagks
 Plugin 'kien/ctrlp.vim'
+" Undo tree"
+Plugin 'simnalamburt/vim-mundo'
 " Status bar
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'jpalardy/vim-slime'
-Plugin 'simnalamburt/vim-mundo'
+" Running stuff
+" Plugin 'jpalardy/vim-slime'
+" Plugin 'janko/vim-test'
 Plugin 'benmills/vimux'
-Plugin 'janko/vim-test'
+Plugin 'epeli/slimux'
 
 "Show buffers in command line
 "Plugin 'bling/vim-bufferline'
@@ -66,6 +71,8 @@ filetype plugin indent on    " required
 " =>> Plugin Settings
 " =>
 """"""""""""""""""""""""""""""""""
+let g:system_copy#copy_command='xclip -sel clipboard'
+let g:system_copy#paste_command='xclip -sel clipboard -o'
 "
 " Always show statusline
 set laststatus=2
@@ -76,8 +83,9 @@ let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
-" Setting for vim-test
-let test#strategy = "vimux"
+" " Setting for vim-test
+" let test#strategy = "vimux"
+let g:slimux_select_from_current_window = 1
 
 """"""""""""""""""""""""""""""""""
 " =>
@@ -136,6 +144,8 @@ endif
 " =>> Devin Vim Settings
 " =>
 """"""""""""""""""""""""""""""""""
+
+" set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 " Make .vim directory for backup, swap, undo files
 if !isdirectory($HOME."/.vim")
@@ -199,7 +209,6 @@ set splitright
 " =>
 """"""""""""""""""""""""""""""""""
 set foldcolumn=1
-
 syntax enable
 
 " Enable folding
@@ -312,12 +321,21 @@ map <leader>z ZZ
 map <leader>w :w<CR>
 map <leader>re :reg<CR>
 
-nmap <silent> <leader>nn :TestNearest<CR>
-nmap <silent> <leader>ff :TestFile<CR>
-nmap <silent> <leader>ss :TestSuite<CR>
-nmap <silent> <leader>ll :TestLast<CR>
-nmap <silent> <leader>vv :TestVisit<CR>
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>sc :SlimuxREPLConfigure<CR>
+map <Leader>b :SlimuxREPLSendBuffer<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
 
+" map <F5> :call VimuxRunCommand("python3 " . bufname(%)")<CR>
+
+" nmap <silent> <leader>nn :TestNearest<CR>
+" nmap <silent> <leader>ff :TestFile<CR>
+" nmap <silent> <leader>ss :TestSuite<CR>
+" nmap <silent> <leader>ll :TestLast<CR>
+" nmap <silent> <leader>vv :TestVisit<CR>
+" 
 "
 "">
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

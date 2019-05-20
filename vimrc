@@ -78,14 +78,15 @@ let g:system_copy#paste_command='xclip -sel clipboard -o'
 set laststatus=2
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
-" Settings for vim-slime
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+""" Settings for vim-slime
+""let g:slime_target = "tmux"
+""let g:slime_paste_file = "$HOME/.slime_paste"
+""let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
 " " Setting for vim-test
 " let test#strategy = "vimux"
-let g:slimux_select_from_current_window = 1
+let g:slimux_select_from_current_window = 0
+let g:VimuxUseNearest = 0
 
 """"""""""""""""""""""""""""""""""
 " =>
@@ -328,7 +329,30 @@ map <Leader>b :SlimuxREPLSendBuffer<CR>
 map <Leader>a :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
 
-" map <F5> :call VimuxRunCommand("python3 " . bufname(%)")<CR>
+map <leader>un :let VimuxUseNearest = 1<CR>
+map <leader>dun :let VimuxUseNearest = 0<CR>
+
+map <F5> :w<CR>:call VimuxRunCommand("python3 " . bufname("%"))<CR>
+
+map <leader>vp :VimuxPromptCommand<CR>
+map <leader>vla :VimuxRunLastCommand<CR>
+map <leader>vi :VimuxInspectRunner<CR>
+map <leader>vq :VimuxCloseRunner<CR>
+map <leader>vx :VimuxInterruptRunner<CR>
+map <leader>vz :call VimuxZoomRunner()<CR>
+
+function! VimuxSlime()
+    call VimuxSendText(@v)
+    call VimuxSendKeys("Enter")
+endfunction
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vmap <LocalLeader>vs "vy :call VimuxSlime()<CR>
+
+" Select current paragraph and send it to tmux
+nmap <LocalLeader>vs vip<LocalLeader>vs<CR>
+
+nmap <LocalLeader>vl V<LocalLeader>vs<CR>
 
 " nmap <silent> <leader>nn :TestNearest<CR>
 " nmap <silent> <leader>ff :TestFile<CR>

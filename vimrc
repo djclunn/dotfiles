@@ -32,12 +32,13 @@ Plugin 'scrooloose/nerdtree'
 " Find files or tags
 Plugin 'kien/ctrlp.vim'
 " Status bar
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'jpalardy/vim-slime'
 Plugin 'simnalamburt/vim-mundo'
-
+Plugin 'benmills/vimux'
+Plugin 'janko/vim-test'
 
 "Show buffers in command line
 "Plugin 'bling/vim-bufferline'
@@ -74,6 +75,9 @@ set t_Co=256
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
+
+" Setting for vim-test
+let test#strategy = "vimux"
 
 """"""""""""""""""""""""""""""""""
 " =>
@@ -173,7 +177,7 @@ set shiftwidth=4
 set shiftround		" always indent outdent to nearest tabstop
 set expandtab
 set smarttab		" use tabs at the start of a line, spaces elsewhere
-"set nowrap
+set nowrap
 
 set ignorecase
 set smartcase
@@ -268,30 +272,16 @@ colorscheme desert
 
 " Mundo plugin map
 map <F3> :MundoToggle<CR>
+" map NERDtree toggle
 
 " Escape maps
 nnoremap <Tab> <Esc>
 vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
-" cnoremap <Tab> <C-C><Esc>
 inoremap <Tab> <Esc>`^
 inoremap <Leader><Tab> <Tab>
 
-" imap ii <Esc>`^
 imap jj <Esc>`^
-
-let mapleader=","
-
-if has("gui_running")
-    map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
-    map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
-else
-    map <Leader>h :vert help<CR>
-endif
-
-map <Leader>p :set paste<CR>"*p:set nopaste<CR>
-map <Leader>o o<ESC>
-map <leader>O O<ESC>
 
 " Window moves
 nnoremap <C-j> <C-W>j
@@ -304,6 +294,32 @@ nnoremap <C-l> <C-W>l
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
+" Leader maps
+let mapleader="\\"
+
+if has("gui_running")
+    map <Leader>h :vert help<CR>:let &columns=&columns*2<CR><C-W>=
+    map <Leader>ch <C-W>b:clo<CR>:let &columns=&columns/2<CR>
+else
+    map <Leader>h :vert help<CR>
+endif
+
+map <Leader>p :set paste<CR>"*p:set nopaste<CR>
+map <Leader>o o<ESC>
+map <leader>O O<ESC>
+map <leader>nu :set relativenumber!<CR>
+map <leader>z ZZ
+map <leader>w :w<CR>
+map <leader>re :reg<CR>
+
+nmap <silent> <leader>nn :TestNearest<CR>
+nmap <silent> <leader>ff :TestFile<CR>
+nmap <silent> <leader>ss :TestSuite<CR>
+nmap <silent> <leader>ll :TestLast<CR>
+nmap <silent> <leader>vv :TestVisit<CR>
+
+"
+"">
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =>
 " =>> Complicated stuff?

@@ -1,5 +1,18 @@
 #!/bin/sh
 
+apt install git -y
+apt install vim-gtk3 -y
+apt install python3 -y
+apt install python3-pip -y
+apt install zsh -y
+apt install tmux -y
+apt install fonts-powerline -y
+apt install curl -y
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 cwd=$PWD
 cd $HOME
 ln -s $cwd/.inputrc .inputrc

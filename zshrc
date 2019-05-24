@@ -1,3 +1,4 @@
+# This is the right one
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000

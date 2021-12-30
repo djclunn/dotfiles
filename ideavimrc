@@ -1,0 +1,116 @@
+"" Source""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set vim-paragraph-motion
+set textobj-indent
+set NERDTree
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+nnoremap \nn :NERDTree <CR>
+nnoremap \nt :NERDTreeToggle <CR>
+nnoremap \nf :NERDTreeFind <CR>
+
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+""" set idearefactormode=keep
+
+""" Mappings --------------------------------
+" map <leader>f <Plug>(easymotion-s) "doesnt work"
+" map <leader>e <Plug>(easymotion-f)
+
+nmap gh <Action>(QuickJavaDoc)
+nmap gD <Action>(GotoTypeDeclaration)
+map <leader>d <Action>(Debug)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+"your .vimrc
+"source ~/.vimrc
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+""" Customized Settings
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+
+map <leader>e <Action>(ExecuteInPyConsoleAction)
+
+set clipboard+=unnamed
+set clipboard+=ideaput
+nnoremap \ev :e C:/Users/declu/.ideavimrc<CR>
+nnoremap \vev :vsplit C:/Users/declu/.ideavimrc<CR>
+nnoremap \sv :action IdeaVim.ReloadVimRc.reload<CR>
+
+"TDS"
+nnoremap <c-\> :action SplitVertically<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
+nnoremap <c-=> :action Unsplit<CR>
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+" cnoremap <Leader>en :action EditSourceInNewWindow<CR>
+nnoremap <Leader>n :action NextWindow<CR>
+nnoremap <Leader>q :action CloseContent<CR>
+" nnoremap <Leader>qa :action CloseAllEditors<CR>
+
+nnoremap \f :action RecentFiles<CR>
+nnoremap \l :action RecentLocations<CR>
+nnoremap \h :action LocalHistory.ShowHistory<CR>
+nnoremap \r :action Refactorings.QuickListPopupAction<CR>
+
+nnoremap gc :action GotoClass<CR>
+nnoremap gf :action GotoFile<CR>
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap gk :action MethodUp<CR>
+nnoremap gj :action MethodDown<CR>
+nnoremap ]] :action MethodDown<CR>
+vnoremap < <gv
+vnoremap > >gv
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap \zc :action CollapseAllRegions<CR>
+nnoremap \zo :action ExpandAllRegions<CR>
+
+nnoremap <leader>ww :action WindowMode<CR>
+nnoremap <leader>wd :action DockPinnedMode<CR>
+nnoremap <leader>wq :wq<CR>
+
+" map <leader>te :echo 'test'
+
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+map g; <Action>(JumpToLastChange)
+map g, <Action>(JumpToNextChange)
+map <Leader>[ <Action>(EditorCodeBlockStart)
+map <Leader>] <Action>(EditorCodeBlockEnd)

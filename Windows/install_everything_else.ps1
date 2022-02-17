@@ -11,4 +11,5 @@ choco install everything -y
 choco install windirstat -y
 choco install github-desktop -y
 choco install pycharm-community -y
-choco install microsoft-windows-terminal -y
+choco install obsidian -y
+choco install slack -y

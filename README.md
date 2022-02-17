@@ -1,26 +1,11 @@
 # dotfiles
 
-personal configuration files
+personal configuration files and software install script
 
-## init.sh
+## Instructions
 
-openbox?
-obconf?
-does clone dotfiles repo and install using install.sh
+For setting up a new machine, clone the dotfiles repo and put in C:\code.
+Open dotfiles directory.
+Open a powershell as administrator and type ./start_windows.ps1.
 
-## install.sh
-
-uses ln -s AKA linux link not windows symlink
-
-## makesymlinks
-
-### dos
-
-cd %HOMEPATH%
-doesn't get oh my zsh
-
-### tilde
-
-gets oh my zsh
-clones vundle
-uses ln -s
+last time wsl --install command got error

@@ -24,6 +24,7 @@ Paste into powershell and press enter.
 
 ### Installs
 
+'''
 choco install googlechrome -y
 choco install firefox -y
 choco install notepadplusplus -y
@@ -47,3 +48,4 @@ choco install imagej -y
 choco install vnc-viewer -y
 choco install winscp -y
 # irfanview, irfanview-shellextension
+'''

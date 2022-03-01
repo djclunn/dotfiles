@@ -17,14 +17,14 @@ Right click start menu. Click Windows PowerShell (Admin)
 In dotfile directory, click File->Powershell->Admin
 
 Select start of line, hit shift and then END then CTRL-C:
-'''
+```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-'''
+```
 Paste into powershell and press enter.
 
 ### Installs
 
-'''
+```
 choco install googlechrome -y
 choco install firefox -y
 choco install notepadplusplus -y
@@ -48,4 +48,4 @@ choco install imagej -y
 choco install vnc-viewer -y
 choco install winscp -y
 # irfanview, irfanview-shellextension
-'''
+```

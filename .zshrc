@@ -99,4 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-echo 'different'
+
+### My Stuff
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+## pyenv stuff
+if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

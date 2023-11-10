@@ -93,9 +93,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias setclip="xclip -selection c"
-alias getclip="xclip -selection c -o"
-
 alias ebash_aliases="vim ~/.bash_aliases"
 alias evimrc="vim ~/.vimrc"
 alias etmuxconf="vim ~/.tmux.conf"

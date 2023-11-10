@@ -1,2 +1,0 @@
-# dotfiles
-personal configuration files

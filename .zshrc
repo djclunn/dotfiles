@@ -105,3 +105,11 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 ## pyenv stuff
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+#set the editor
+export EDITOR='vim'
+
+## auto start tmux
+if [[ $SHLVL -lt 2 ]]; then
+  tmux new-session -A -s "$USER"
+fi

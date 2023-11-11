@@ -71,15 +71,13 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias ebash_aliases="vim ~/.bash_aliases"
-alias evimrc="vim ~/.vimrc"
+alias evimrc="vim ~/.config/nvim/init.vim"
 alias etmuxconf="vim ~/.tmux.conf"
-alias ebashrc="vim ~/.bashrc"
 alias ezshrc="vim ~/.zshrc"
 
 # #search through the history with up or down using first word
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+# bindkey '^[[A' up-line-or-search
+# bindkey '^[[B' down-line-or-search
 # 
 # # # # #fix terminal issues
 # bindkey '^[[H' beginning-of-line
@@ -89,9 +87,12 @@ bindkey '^[[B' down-line-or-search
 # bindkey '[4~' end-of-line
 
 #set the editor
-export EDITOR='vim'
+export EDITOR="nvim"
+alias vim="nvim"
 
 ## auto start tmux
 if [[ $SHLVL -lt 2 ]]; then
   tmux new-session -A -s "$USER"
 fi
+
+

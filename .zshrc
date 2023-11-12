@@ -19,10 +19,19 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 ## pyenv stuff
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
+# auto start tmux
+if [[ $SHLVL -lt 2 ]]; then
+  tmux new-session -A -s "$USER"
+fi
 # For a full list of active aliases, run `alias`.
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
+# CONFIG EDITS
+alias econf_zshrc="nvim ~/.zshrc"
+alias econf_ohmyzsh="nvim ~/.oh-my-zsh"
+alias econf_tmux="nvim ~/.tmux.conf.local"
+alias econf_vim="nvim ~/.nvim_lua_config/chadrc.lua"
 alias config='/opt/homebrew/bin/git --git-dir=/Users/dotpak/.cfg/ --work-tree=/Users/dotpak'
+# EDITOR ALIASES
 alias vi=nvim
 alias vim=nvim
+# PROJECT ALIASES
+# alias pro_doc=

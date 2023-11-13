@@ -26,10 +26,10 @@ fi
 # For a full list of active aliases, run `alias`.
 # CONFIG EDITS
 alias econf_zshrc="nvim ~/.zshrc"
-alias econf_ohmyzsh="nvim ~/.oh-my-zsh"
+# alias econf_ohmyzsh="nvim ~/.oh-my-zsh"
 alias econf_tmux="nvim ~/.tmux.conf.local"
 alias econf_vim="nvim ~/.nvim_lua_config/chadrc.lua"
-alias config='/opt/homebrew/bin/git --git-dir=/Users/dclunn/.cfg/ --work-tree=/Users/dclunn'
+alias config="/opt/homebrew/bin/git --git-dir=/Users/$USER/.cfg/ --work-tree=/Users/$USER"
 # EDITOR ALIASES
 alias vi=nvim
 alias vim=nvim

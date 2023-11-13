@@ -29,7 +29,7 @@ alias econf_zshrc="nvim ~/.zshrc"
 alias econf_ohmyzsh="nvim ~/.oh-my-zsh"
 alias econf_tmux="nvim ~/.tmux.conf.local"
 alias econf_vim="nvim ~/.nvim_lua_config/chadrc.lua"
-alias config='/opt/homebrew/bin/git --git-dir=/Users/dotpak/.cfg/ --work-tree=/Users/dotpak'
+alias config='/opt/homebrew/bin/git --git-dir=/Users/dclunn/.cfg/ --work-tree=/Users/dclunn'
 # EDITOR ALIASES
 alias vi=nvim
 alias vim=nvim

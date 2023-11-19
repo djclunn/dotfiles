@@ -12,6 +12,25 @@ function confirm() {
     esac
 }
 
+function perform_get() {
+    echo "Executing push function. Pushing nvchad custom settings to remote."
+
+    # Confirm before overwriting
+    if confirm "Are you sure you want to push and overwrite the contents of ~/.nvchad_config with ~/.config/nvim/lua/custom?"; then
+        # Copy files from ~/.config/nvim/lua/custom to ~/.nvchad_config
+        rsync -av --delete ~/.config/nvim/lua/custom/ ~/.nvchad_config/
+        
+        commit_message="$2"
+        echo "Executing push function with commit message: $commit_message"
+        # sync between custom folder and config folder
+        rsync -avu ~/.config/nvim/lua/custom/ ~/.nvchad_config/
+        $config add ~/.nvchad_config/*
+    else
+        echo "Push operation aborted."
+        exit 0
+    fi
+}
+
 function perform_push() {
     echo "Executing push function. Pushing nvchad custom settings to remote."
 
@@ -57,8 +76,11 @@ if [[ "$1" == "push" ]]; then
     perform_push "$@"
 elif [[ "$1" == "put" ]]; then
     perform_put
+elif [[ "$1" == "get" ]]; then
+    perform_get
 else
-    echo "Invalid argument. Please use 'push' or 'put'."
+    echo "Invalid argument. Please use 'push' or 'put' or 'get'."
+    echo "get = get updated config into .nvchad_config directory so can compare with config diff"
     echo "push = push updated config from local to remote"
     echo "put = put from user dir to nvchad dir. requires config pull if you want the changes in the remote to be copied."
     exit 1

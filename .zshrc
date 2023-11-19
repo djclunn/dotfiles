@@ -28,7 +28,8 @@ fi
 alias econf_zshrc="nvim ~/.zshrc"
 # alias econf_ohmyzsh="nvim ~/.oh-my-zsh"
 alias econf_tmux="nvim ~/.tmux.conf.local"
-alias econf_vim="nvim ~/.nvim_lua_config/chadrc.lua"
+alias econf_vim="nvim ~/.config/nvim/lua/custom/chadrc.lua"
+alias econf_chad="nvim ~/.config/nvim/lua/custom/chadrc.lua"
 alias config="/opt/homebrew/bin/git --git-dir=/Users/$USER/.cfg/ --work-tree=/Users/$USER"
 alias chad="~/.nvchad_config/.nvchad_sync.sh"
 # EDITOR ALIASES

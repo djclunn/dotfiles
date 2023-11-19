@@ -1,6 +1,7 @@
 #!/bin/bash
 # echo "push = push from local to remote"
 # echo "put = put from user dir to nvchad dir"
+# could this have been replaced by a simple comand in chad config directory to require a file in the home directory? probably.
 
 function confirm() {
     read -p "$1 (y/n): " choice
@@ -39,7 +40,7 @@ function perform_put() {
     # Confirm before overwriting
     if confirm "Have you performed push already to store existing changes? Are you sure you want to overwrite the contents of ~/.config/nvim/lua/custom with ~/.nvchad_config?"; then
         # Overwrite the contents of ~/.config/nvim/lua/custom with ~/.nvchad_config
-        rsync -avu --delete --exclude="DONT_EDIT_HERE.md" ~/.nvchad_config/ ~/.config/nvim/lua/custom/
+        rsync -avu --delete --exclude="DONT_EDIT_HERE.md" --exclude=".nvchad_sync.sh" ~/.nvchad_config/ ~/.config/nvim/lua/custom/
     else
         echo "Pull operation aborted."
         exit 0

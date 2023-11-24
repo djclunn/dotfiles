@@ -458,6 +458,8 @@ bind-key - split-window -v
 bind-key / split-window -h
 set -g mouse
 setw -g mode-keys vi
+### NO bell
+set-option -g bell-action none
 
 
 # ### https://thoughtbot.com/blog/tmux-copy-paste-on-os-x-a-better-future

@@ -20,7 +20,7 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 # auto start tmux
-if [[ $SHLVL -lt 2 ]]; then
+if [[ $SHLVL -lt 2 && "$TERM_PROGRAM" != "vscode" ]]; then
   tmux new-session -A -s "$USER"
 fi
 # For a full list of active aliases, run `alias`.
@@ -28,13 +28,12 @@ fi
 alias econf_zshrc="nvim ~/.zshrc"
 # alias econf_ohmyzsh="nvim ~/.oh-my-zsh"
 alias econf_tmux="nvim ~/.tmux.conf.local"
-alias econf_vim="nvim ~/.config/nvim/lua/custom/chadrc.lua"
-alias econf_chad="nvim ~/.config/nvim/lua/custom/chadrc.lua"
+alias econf_lua="nvim ~/.config/nvim/lua/custom/chadrc.lua"
+alias econf_chad="nvim -S ~/.chadrc_session.vim"
+alias econf_nvim_session="nvim -S ~/.chadrc_session.vim"
 alias config="/opt/homebrew/bin/git --git-dir=/Users/$USER/.cfg/ --work-tree=/Users/$USER"
 alias chad="~/.nvchad_config/.nvchad_sync.sh"
 # EDITOR ALIASES
 alias vi=nvim
 alias vim=nvim
-# NVCHAD ALIASES
 # PROJECT ALIASES
-# alias pro_doc=
